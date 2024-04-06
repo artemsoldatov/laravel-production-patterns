@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('status')->default('pending'); // pending|processing|paid|failed
             $table->string('stripe_session_id')->nullable();
             $table->timestamps();
+
+            $table->index(['account_id', 'status']);
         });
     }
 
