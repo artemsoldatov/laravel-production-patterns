@@ -2,6 +2,8 @@
 
 namespace App\Patterns\Outbox;
 
+use App\Jobs\ProcessOrderJob;
+
 /**
  * Maps an outbox topic to the queued job that handles it. Keeping this as data
  * makes adding a new event a one-line change and keeps the relay generic.
@@ -13,6 +15,8 @@ class OutboxRoutes
      */
     public static function all(): array
     {
-        return [];
+        return [
+            'order.placed' => ProcessOrderJob::class,
+        ];
     }
 }
