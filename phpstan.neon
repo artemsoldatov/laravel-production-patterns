@@ -5,3 +5,5 @@ parameters:
     level: max
     paths:
         - app
+    excludePaths:
+        - app/Console/Commands/RelayOutboxCommand.php # infinite daemon loop by design

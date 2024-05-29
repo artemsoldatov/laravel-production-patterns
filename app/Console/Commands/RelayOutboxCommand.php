@@ -27,7 +27,7 @@ class RelayOutboxCommand extends Command
         $pollMs = (int) env('OUTBOX_POLL_MS', 1000);
         $this->info('Outbox relay started; polling every '.$pollMs.'ms. Ctrl+C to stop.');
 
-        while (true) {
+        while (true) { // @phpstan-ignore while.alwaysTrue
             $relay->tick();
             usleep($pollMs * 1000);
         }
