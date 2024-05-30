@@ -53,6 +53,9 @@ jobs:
       - name: Pint (formatting)
         run: ./vendor/bin/pint --test
 
+      - name: PHPStan (max)
+        run: php -d memory_limit=512M vendor/bin/phpstan analyse --no-progress
+
       - name: Migrate
         run: php artisan migrate --force
 
