@@ -45,3 +45,7 @@ The outbox relay runs as either a daemon or a single batch:
 php artisan outbox:relay          # loop
 php artisan outbox:relay --once   # one batch, good for cron
 ```
+
+## About the broker
+
+The relay dispatches through Laravel's queue abstraction, so it isn't tied to any particular broker. This repo uses Redis for the queue to keep local setup light. In production the same relay can point at RabbitMQ or SQS just by changing QUEUE_CONNECTION and the queue driver; the outbox, the deterministic job id and the idempotent consumer don't change.
